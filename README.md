@@ -1,2 +1,2 @@
-# SPMemoryLeaksDetector
+# SPLeaksDetector
 iOS memory leaks detector.
