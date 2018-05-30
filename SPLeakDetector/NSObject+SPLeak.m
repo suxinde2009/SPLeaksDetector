@@ -14,25 +14,27 @@
 
 @implementation NSObject (SPLeak)
 
-@dynamic pProxy;
+@dynamic memoryDebuggerProxy;
 
-- (void)setPProxy:(SPMemoryDebuggerObjectProxy *)pProxy {
-    objc_setAssociatedObject(self, @selector(pProxy), pProxy, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setMemoryDebuggerProxy:(SPMemoryDebuggerObjectProxy *)memoryDebuggerProxy {
+    objc_setAssociatedObject(self,
+                             @selector(memoryDebuggerProxy),
+                             memoryDebuggerProxy,
+                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (SPMemoryDebuggerObjectProxy*)pProxy
-{
-    id curProxy = objc_getAssociatedObject(self, @selector(pProxy));
+- (SPMemoryDebuggerObjectProxy *)memoryDebuggerProxy {
+    id curProxy = objc_getAssociatedObject(self,
+                                           @selector(memoryDebuggerProxy));
     return curProxy;
 }
 
-+ (void)swizzleSEL:(SEL)originalSEL withSEL:(SEL)swizzledSEL
-{
++ (void)swizzleSEL:(SEL)originalSEL
+           withSEL:(SEL)swizzledSEL {
     Class class = [self class];
-    
     Method originalMethod = class_getInstanceMethod(class, originalSEL);
     Method swizzledMethod = class_getInstanceMethod(class, swizzledSEL);
-    
+
     BOOL didAddMethod =
     class_addMethod(class,
                     originalSEL,
@@ -52,17 +54,13 @@
     
 }
 
-+ (void)prepareForSniffer
-{
-    
++ (void)prepareForMemoroyDebugger {
 }
 
-- (BOOL)markAlive
-{
-    if ([self pProxy] != nil) {
+- (BOOL)markAlive {
+    if ([self memoryDebuggerProxy] != nil) {
         return false;
     }
-    
     //skip system class
     NSString* className = NSStringFromClass([self class]);
     if ([className hasPrefix:@"_"] || [className hasPrefix:@"UI"] || [className hasPrefix:@"NS"]) {
@@ -103,17 +101,15 @@
     
     
     SPMemoryDebuggerObjectProxy* proxy = [SPMemoryDebuggerObjectProxy new];
-    [self setPProxy:proxy];
+    [self setMemoryDebuggerProxy:proxy];
     [proxy prepareProxy:self];
     
     
     return true;
 }
 
-- (BOOL)isAlive
-{
+- (BOOL)isAlive {
     BOOL alive = true;
-    
     return alive;
 }
 

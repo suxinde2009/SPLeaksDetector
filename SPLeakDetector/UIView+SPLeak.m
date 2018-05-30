@@ -12,7 +12,7 @@
 
 @implementation UIView (SPLeak)
 
-+ (void)prepareForSniffer {
++ (void)prepareForMemoroyDebugger {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         [self swizzleSEL:@selector(didMoveToSuperview)
@@ -25,13 +25,13 @@
     
     BOOL hasAliveParent = false;
     
-    UIResponder* r = self.nextResponder;
-    while (r) {
-        if ([r pProxy] != nil) {
+    UIResponder *responder = self.nextResponder;
+    while (responder) {
+        if ([responder memoryDebuggerProxy] != nil) {
             hasAliveParent = true;
             break;
         }
-        r = r.nextResponder;
+        responder = responder.nextResponder;
     }
     
     if (hasAliveParent) {
@@ -44,45 +44,44 @@
     
     BOOL onUIStack = false;
     
-    UIView* v = self;
-    while (v.superview != nil) {
-        v = v.superview;
+    UIView *view = self;
+    while (view.superview != nil) {
+        view = view.superview;
     }
-    if ([v isKindOfClass:[UIWindow class]]) {
+    if ([view isKindOfClass:[UIWindow class]]) {
         onUIStack = true;
     }
     
     //save responder
-    if (self.pProxy.weakResponder == nil) {
-        UIResponder* r = self.nextResponder;
-        while (r) {
-            if (r.nextResponder == nil) {
+    if (self.memoryDebuggerProxy.weakResponder == nil) {
+        UIResponder *responder = self.nextResponder;
+        while (responder) {
+            if (responder.nextResponder == nil) {
                 break;
             } else {
-                r = r.nextResponder;
+                responder = responder.nextResponder;
             }
             
-            if ([r isKindOfClass:[UIViewController class]]) {
+            if ([responder isKindOfClass:[UIViewController class]]) {
                 break;
             }
         }
-        self.pProxy.weakResponder = r;
+        self.memoryDebuggerProxy.weakResponder = responder;
     }
-    
     
     if (onUIStack == false) {
         alive = false;
         //if controller is active, view should be considered alive too
-        if ([self.pProxy.weakResponder isKindOfClass:[UIViewController class]]) {
+        if ([self.memoryDebuggerProxy.weakResponder isKindOfClass:[UIViewController class]]) {
             alive = true;
         } else {
-            //no active controller found
-            //            SPLeakLog(@"dangling object: %@", [self class]);
+            // no active controller found
+            // SPLeakLog(@"dangling object: %@", [self class]);
         }
     }
     
     if (alive == false) {
-        //        SPLeakLog(@"leaked object: %@ ?", [self class]);
+        // SPLeakLog(@"leaked object: %@ ?", [self class]);
     }
     return alive;
 }

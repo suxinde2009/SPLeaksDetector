@@ -12,7 +12,7 @@
 
 @implementation UINavigationController (SPLeak)
 
-+ (void)prepareForSniffer {
++ (void)prepareForMemoroyDebugger {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         [self swizzleSEL:@selector(pushViewController:animated:)

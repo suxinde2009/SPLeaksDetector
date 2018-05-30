@@ -14,7 +14,7 @@
 
 @protocol SPMemoryDebuggerProtocol <NSObject>
 
-+ (void)prepareForSniffer;
++ (void)prepareForMemoroyDebugger;
 
 - (BOOL)markAlive;
 
@@ -26,7 +26,9 @@
 
 + (instancetype)sharedInstance;
 
-- (void)installLeakSniffer;
+- (void)startDebugger;
+- (void)stop;
+- (BOOL)isRunning;
 - (void)addIgnoreList:(NSArray*)ignoreList;
 - (void)alertLeaks; //use UIAlertView to notify leaks
 

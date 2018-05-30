@@ -14,6 +14,6 @@
 
 + (void)swizzleSEL:(SEL)originalSEL withSEL:(SEL)swizzledSEL;
 
-@property (nonatomic, strong) SPMemoryDebuggerObjectProxy* pProxy;
+@property (nonatomic, strong) SPMemoryDebuggerObjectProxy *memoryDebuggerProxy;
 
 @end

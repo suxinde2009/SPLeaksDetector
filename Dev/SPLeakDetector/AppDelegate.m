@@ -18,7 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [[SPMemoryDebugger sharedInstance] installLeakSniffer];
+    [[SPMemoryDebugger sharedInstance] startDebugger];
     
     
     return YES;

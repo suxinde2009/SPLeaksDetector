@@ -55,7 +55,7 @@
         if (cur) {
             BOOL ret = [cur markAlive];
             if (ret) {
-                [cur pProxy].weakHost = self;
+                [cur memoryDebuggerProxy].weakHost = self;
                 [cur watchAllRetainedProperties:level+1];
             }
         }
@@ -65,20 +65,15 @@
 
 - (void)didObserveNewValue:(id)value {
     if (value) {
-        BOOL ret = [value markAlive];
-        if (ret) {
-            [value pProxy].weakHost = self;
+        if ([value markAlive]) {
+            [value memoryDebuggerProxy].weakHost = self;
             [value watchAllRetainedProperties:0];
         }
     }
 }
 
 - (BOOL)isAlive {
-    BOOL alive = true;
-    if (self.pProxy.weakHost == nil) {
-        alive = false;
-    }
-    return alive;
+    return (self.memoryDebuggerProxy.weakHost != nil);
 }
 
 #pragma mark- mess with runtime

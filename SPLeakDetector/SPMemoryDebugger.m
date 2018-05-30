@@ -12,26 +12,26 @@
 #import "UIViewController+SPLeak.h"
 #import "NSObject+SPLeak.h"
 
-#define kPLeakSnifferPingInterval       0.5f
+const CGFloat kSPMemoryDetectorPingInterval = 0.5f;
 
 @interface SPMemoryDebugger ()
 
-@property (nonatomic, strong) NSTimer*                 pingTimer;
-@property (nonatomic, assign) BOOL                     useAlert;
-@property (nonatomic, strong) NSMutableArray*          ignoreList;
+@property (nonatomic, strong) dispatch_source_t pingTimer;
+@property (nonatomic, assign) BOOL              useAlert;
+@property (nonatomic, strong) NSMutableArray*   ignoreList;
+
+@property (nonatomic, assign) BOOL              prepared;
 
 @end
 
 @implementation SPMemoryDebugger
 
 + (instancetype)sharedInstance {
-    static SPMemoryDebugger* instance = nil;
-    
+    static id instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        instance = [SPMemoryDebugger new];
+        instance = [[self alloc] init];
     });
-    
     return instance;
 }
 
@@ -48,11 +48,13 @@
     return self;
 }
 
-- (void)installLeakSniffer {
-    [UINavigationController prepareForSniffer];
-    [UIViewController prepareForSniffer];
-    [UIView prepareForSniffer];
-    
+- (void)startDebugger {
+    if (!self.prepared) {
+        [UINavigationController prepareForMemoroyDebugger];
+        [UIViewController prepareForMemoroyDebugger];
+        [UIView prepareForMemoroyDebugger];
+        self.prepared = YES;
+    }
     [self startPingTimer];
 }
 
@@ -71,23 +73,54 @@
 }
 
 - (void)startPingTimer {
-    if ([NSThread isMainThread] == false) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self startPingTimer];
-            return ;
-        });
-    }
-    
     if (self.pingTimer) {
         return;
     }
     
-    self.pingTimer = [NSTimer scheduledTimerWithTimeInterval:kPLeakSnifferPingInterval target:self selector:@selector(sendPing) userInfo:nil repeats:true];
+    self.pingTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
+    dispatch_source_set_timer(self.pingTimer, DISPATCH_TIME_NOW, kSPMemoryDetectorPingInterval * NSEC_PER_SEC, 0);
+    dispatch_source_set_event_handler(self.pingTimer, ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:SPMemoryDebuggerPingNotification
+                                                            object:nil];
+    });
+    dispatch_resume(self.pingTimer);
 }
 
-- (void)sendPing
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:SPMemoryDebuggerPingNotification object:nil];
+- (void)stop {
+    if (self.pingTimer) {
+        dispatch_source_cancel(self.pingTimer);
+        self.pingTimer = nil;
+    }
+}
+
+- (BOOL)isRunning {
+    return self.pingTimer;
+}
+
+- (void)sendPing {
+    [[NSNotificationCenter defaultCenter] postNotificationName:SPMemoryDebuggerPingNotification
+                                                        object:nil];
+}
+
+- (NSArray *)defaultIgnoreClasses {
+    return @[
+             @"UITextFieldLabel",
+             @"UIFieldEditor",
+             @"UITextSelectionView",
+             @"UITableViewCellSelectedBackground",
+             @"UIView",
+             @"UIAlertController",
+             ];
+}
+
+- (NSArray *)defaultObserveContainerClasses {
+    return @[
+             @"NSArray",
+             @"NSMutableArray",
+             @"NSDictionary",
+             @"NSSet",
+             @"NSMutableSet"
+             ];
 }
 
 - (void)detectPong:(NSNotification*)notification {

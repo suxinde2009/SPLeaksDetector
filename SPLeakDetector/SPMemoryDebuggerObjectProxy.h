@@ -18,11 +18,11 @@
 
 - (void)prepareProxy:(NSObject*)target;
 
-@property (nonatomic, weak) NSObject*                 weakTarget;
-@property (nonatomic, weak) NSObject*                 weakHost;
-@property (nonatomic, weak) NSObject*                 weakResponder;
+@property (nonatomic, weak) NSObject *weakTarget;
+@property (nonatomic, weak) NSObject *weakHost;
+@property (nonatomic, weak) NSObject *weakResponder;
 
-@property (nonatomic, weak) id<SPMemoryDebuggerObjectProxyKVODelegate>                 kvoDelegate;
+@property (nonatomic, weak) id<SPMemoryDebuggerObjectProxyKVODelegate> kvoDelegate;
 
 - (void)observeObject:(id)obj
           withKeyPath:(NSString*)path
