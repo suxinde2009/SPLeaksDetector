@@ -55,10 +55,9 @@
     
     
     for (NSString* name in watchedProperties) {
-        id cur = [self valueForKey:name];
+        id cur = [self valueForKey:name]; // 是否valueForKey是否存在风险???
         if (cur) {
-            BOOL ret = [cur markAlive];
-            if (ret) {
+            if ([cur markAlive]) {
                 [cur memoryDebuggerProxy].weakHost = self;
                 [cur watchAllRetainedProperties:level+1];
             }
