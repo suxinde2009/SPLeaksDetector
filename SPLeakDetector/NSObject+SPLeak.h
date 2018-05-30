@@ -16,4 +16,6 @@
 
 @property (nonatomic, strong) SPMemoryDebuggerObjectProxy *memoryDebuggerProxy;
 
+- (BOOL)isObjectAsSingleton;
+
 @end

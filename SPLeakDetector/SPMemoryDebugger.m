@@ -12,6 +12,8 @@
 #import "UIViewController+SPLeak.h"
 #import "NSObject+SPLeak.h"
 
+#import <FBRetainCycleDetector/FBRetainCycleDetector.h>
+
 const CGFloat kSPMemoryDetectorPingInterval = 0.5f;
 
 @interface SPMemoryDebugger ()
@@ -144,10 +146,62 @@ const CGFloat kSPMemoryDetectorPingInterval = 0.5f;
     } else {
         if ([leakedObject isKindOfClass:[UIViewController class]]) {
             SPLeakLog(@"\n\nDetect Possible Controller Leak: %@ \n\n", [leakedObject class]);
+            
+            NSString *retainCycleDetectResult = [self detectRetainCycleForCandidate:leakedObject];
+            
+            NSLog(@"疑似内存泄露的对象循环引用检测结果: %@", retainCycleDetectResult);
+            
         } else {
             SPLeakLog(@"\n\nDetect Possible Leak: %@ \n\n", [leakedObject class]);
         }
     }
 }
+
+- (NSString *)detectRetainCycleForCandidate:(id)candidate {
+    if (!candidate) {
+        return nil;
+    }
+    
+    FBRetainCycleDetector *detector = [[FBRetainCycleDetector alloc] init];
+    [detector addCandidate:candidate];
+    NSSet *retainCycles = [detector findRetainCyclesWithMaxCycleLength:8];
+    
+    NSMutableString *content = [NSMutableString string];
+    for (NSArray *retainCycle in retainCycles) {
+        NSInteger index = 0;
+        for (FBObjectiveCGraphElement *element in retainCycle) {
+            if (element.object == candidate) {
+                NSArray *shiftedRetainCycle = [self shiftArray:retainCycle toIndex:index];
+                [content appendFormat:@"存在以下循环引用: \n %@ %@ ", NSStringFromClass([candidate class]), shiftedRetainCycle];
+                break;
+            }
+            ++index;
+        }
+    }
+    // 未检测到循环引用
+    if (content.length == 0) {
+        [content appendString:@"使用 FBRetainCycleDetector 未检测到引用循环，建议使用 Xcode Memory Graph 确认。"];
+    }
+    
+    return content.copy;
+}
+
+- (NSArray *)shiftArray:(NSArray *)array toIndex:(NSInteger)index {
+    if (index < 0 || index >= array.count) {
+        return nil;
+    } else if (index == 0) {
+        return array;
+    }
+    
+    NSRange range = NSMakeRange(index, array.count - index);
+    if (range.length > 0) {
+        return nil;
+    }
+    
+    NSMutableArray *result = [[array subarrayWithRange:range] mutableCopy];
+    [result addObjectsFromArray:[array subarrayWithRange:NSMakeRange(0, index)]];
+    return result;
+}
+
 
 @end

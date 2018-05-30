@@ -109,8 +109,31 @@
 }
 
 - (BOOL)isAlive {
-    BOOL alive = true;
-    return alive;
+    return (self.memoryDebuggerProxy.weakHost != nil);
+}
+
+- (BOOL)isObjectAsSingleton {
+    Class theClass = object_getClass([self class]);
+    unsigned int clsMethodCount = 0;
+    
+    BOOL isSingleton = NO;
+    Method *methods = class_copyMethodList(theClass, &clsMethodCount);
+    for (unsigned int i = 0; i < clsMethodCount; ++i) {
+        Method method = methods[i];
+        const char *typeEncoding = method_getTypeEncoding(method);
+        if (strcmp(typeEncoding, "@16@0:8") == 0) {
+            SEL selector = method_getName(method);
+            IMP imp = method_getImplementation(method);
+            id singletonInstance = ((id(*)(Class, SEL))(void *)imp)([self class], selector);
+            if (singletonInstance == self) {
+                isSingleton = YES;
+            }
+            break;
+        }
+    }
+    free(methods);
+    
+    return isSingleton;
 }
 
 @end
