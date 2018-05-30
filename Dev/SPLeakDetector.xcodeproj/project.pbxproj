@@ -1,0 +1,466 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1F43C4BF20BEF397001FE005 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F43C4BE20BEF397001FE005 /* AppDelegate.m */; };
+		1F43C4C220BEF397001FE005 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F43C4C120BEF397001FE005 /* ViewController.m */; };
+		1F43C4C520BEF397001FE005 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F43C4C320BEF397001FE005 /* Main.storyboard */; };
+		1F43C4C720BEF397001FE005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F43C4C620BEF397001FE005 /* Assets.xcassets */; };
+		1F43C4CA20BEF397001FE005 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F43C4C820BEF397001FE005 /* LaunchScreen.storyboard */; };
+		1F43C4CD20BEF397001FE005 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F43C4CC20BEF397001FE005 /* main.m */; };
+		1F43C4EE20BEFAD2001FE005 /* LeakingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F43C4ED20BEFAD2001FE005 /* LeakingViewController.m */; };
+		1F43C4FE20BEFD39001FE005 /* NSObject+SPLeak.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F43C4F120BEFD39001FE005 /* NSObject+SPLeak.m */; };
+		1F43C4FF20BEFD39001FE005 /* NSObject+SPLeakTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F43C4F320BEFD39001FE005 /* NSObject+SPLeakTrack.m */; };
+		1F43C50020BEFD39001FE005 /* SPMemoryDebugger.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F43C4F520BEFD39001FE005 /* SPMemoryDebugger.m */; };
+		1F43C50120BEFD39001FE005 /* SPMemoryDebuggerObjectProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F43C4F720BEFD39001FE005 /* SPMemoryDebuggerObjectProxy.m */; };
+		1F43C50220BEFD39001FE005 /* UINavigationController+SPLeak.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F43C4F920BEFD39001FE005 /* UINavigationController+SPLeak.m */; };
+		1F43C50320BEFD39001FE005 /* UIView+SPLeak.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F43C4FB20BEFD39001FE005 /* UIView+SPLeak.m */; };
+		1F43C50420BEFD39001FE005 /* UIViewController+SPLeak.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F43C4FD20BEFD39001FE005 /* UIViewController+SPLeak.m */; };
+		BD3AF561691242703DB879FA /* libPods-SPLeakDetector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63FCD7E9F66456CED81600AB /* libPods-SPLeakDetector.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1F43C4BA20BEF397001FE005 /* SPLeakDetector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPLeakDetector.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F43C4BD20BEF397001FE005 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1F43C4BE20BEF397001FE005 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1F43C4C020BEF397001FE005 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1F43C4C120BEF397001FE005 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1F43C4C420BEF397001FE005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1F43C4C620BEF397001FE005 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1F43C4C920BEF397001FE005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1F43C4CB20BEF397001FE005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F43C4CC20BEF397001FE005 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1F43C4EC20BEFAD2001FE005 /* LeakingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeakingViewController.h; sourceTree = "<group>"; };
+		1F43C4ED20BEFAD2001FE005 /* LeakingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeakingViewController.m; sourceTree = "<group>"; };
+		1F43C4F020BEFD39001FE005 /* NSObject+SPLeak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SPLeak.h"; sourceTree = "<group>"; };
+		1F43C4F120BEFD39001FE005 /* NSObject+SPLeak.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SPLeak.m"; sourceTree = "<group>"; };
+		1F43C4F220BEFD39001FE005 /* NSObject+SPLeakTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SPLeakTrack.h"; sourceTree = "<group>"; };
+		1F43C4F320BEFD39001FE005 /* NSObject+SPLeakTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SPLeakTrack.m"; sourceTree = "<group>"; };
+		1F43C4F420BEFD39001FE005 /* SPMemoryDebugger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPMemoryDebugger.h; sourceTree = "<group>"; };
+		1F43C4F520BEFD39001FE005 /* SPMemoryDebugger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPMemoryDebugger.m; sourceTree = "<group>"; };
+		1F43C4F620BEFD39001FE005 /* SPMemoryDebuggerObjectProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPMemoryDebuggerObjectProxy.h; sourceTree = "<group>"; };
+		1F43C4F720BEFD39001FE005 /* SPMemoryDebuggerObjectProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPMemoryDebuggerObjectProxy.m; sourceTree = "<group>"; };
+		1F43C4F820BEFD39001FE005 /* UINavigationController+SPLeak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+SPLeak.h"; sourceTree = "<group>"; };
+		1F43C4F920BEFD39001FE005 /* UINavigationController+SPLeak.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+SPLeak.m"; sourceTree = "<group>"; };
+		1F43C4FA20BEFD39001FE005 /* UIView+SPLeak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SPLeak.h"; sourceTree = "<group>"; };
+		1F43C4FB20BEFD39001FE005 /* UIView+SPLeak.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SPLeak.m"; sourceTree = "<group>"; };
+		1F43C4FC20BEFD39001FE005 /* UIViewController+SPLeak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SPLeak.h"; sourceTree = "<group>"; };
+		1F43C4FD20BEFD39001FE005 /* UIViewController+SPLeak.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SPLeak.m"; sourceTree = "<group>"; };
+		49A4000479962B0EB607B5AB /* Pods-SPLeakDetector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPLeakDetector.release.xcconfig"; path = "Pods/Target Support Files/Pods-SPLeakDetector/Pods-SPLeakDetector.release.xcconfig"; sourceTree = "<group>"; };
+		63FCD7E9F66456CED81600AB /* libPods-SPLeakDetector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SPLeakDetector.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6510A11D75703EEE5E5B02E6 /* Pods-SPLeakDetector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPLeakDetector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SPLeakDetector/Pods-SPLeakDetector.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1F43C4B720BEF397001FE005 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD3AF561691242703DB879FA /* libPods-SPLeakDetector.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		178DD8167ACB51B2855CF9C3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6510A11D75703EEE5E5B02E6 /* Pods-SPLeakDetector.debug.xcconfig */,
+				49A4000479962B0EB607B5AB /* Pods-SPLeakDetector.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		1F43C4B120BEF397001FE005 = {
+			isa = PBXGroup;
+			children = (
+				1F43C4BC20BEF397001FE005 /* SPLeakDetector */,
+				1F43C4BB20BEF397001FE005 /* Products */,
+				178DD8167ACB51B2855CF9C3 /* Pods */,
+				87FA874B8B977669B9EBADB2 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1F43C4BB20BEF397001FE005 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F43C4BA20BEF397001FE005 /* SPLeakDetector.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1F43C4BC20BEF397001FE005 /* SPLeakDetector */ = {
+			isa = PBXGroup;
+			children = (
+				1F43C4EF20BEFD39001FE005 /* SPLeakDetector */,
+				1F43C4BD20BEF397001FE005 /* AppDelegate.h */,
+				1F43C4BE20BEF397001FE005 /* AppDelegate.m */,
+				1F43C4C020BEF397001FE005 /* ViewController.h */,
+				1F43C4C120BEF397001FE005 /* ViewController.m */,
+				1F43C4EC20BEFAD2001FE005 /* LeakingViewController.h */,
+				1F43C4ED20BEFAD2001FE005 /* LeakingViewController.m */,
+				1F43C4C320BEF397001FE005 /* Main.storyboard */,
+				1F43C4C620BEF397001FE005 /* Assets.xcassets */,
+				1F43C4C820BEF397001FE005 /* LaunchScreen.storyboard */,
+				1F43C4CB20BEF397001FE005 /* Info.plist */,
+				1F43C4CC20BEF397001FE005 /* main.m */,
+			);
+			path = SPLeakDetector;
+			sourceTree = "<group>";
+		};
+		1F43C4EF20BEFD39001FE005 /* SPLeakDetector */ = {
+			isa = PBXGroup;
+			children = (
+				1F43C4F020BEFD39001FE005 /* NSObject+SPLeak.h */,
+				1F43C4F120BEFD39001FE005 /* NSObject+SPLeak.m */,
+				1F43C4F220BEFD39001FE005 /* NSObject+SPLeakTrack.h */,
+				1F43C4F320BEFD39001FE005 /* NSObject+SPLeakTrack.m */,
+				1F43C4F420BEFD39001FE005 /* SPMemoryDebugger.h */,
+				1F43C4F520BEFD39001FE005 /* SPMemoryDebugger.m */,
+				1F43C4F620BEFD39001FE005 /* SPMemoryDebuggerObjectProxy.h */,
+				1F43C4F720BEFD39001FE005 /* SPMemoryDebuggerObjectProxy.m */,
+				1F43C4F820BEFD39001FE005 /* UINavigationController+SPLeak.h */,
+				1F43C4F920BEFD39001FE005 /* UINavigationController+SPLeak.m */,
+				1F43C4FA20BEFD39001FE005 /* UIView+SPLeak.h */,
+				1F43C4FB20BEFD39001FE005 /* UIView+SPLeak.m */,
+				1F43C4FC20BEFD39001FE005 /* UIViewController+SPLeak.h */,
+				1F43C4FD20BEFD39001FE005 /* UIViewController+SPLeak.m */,
+			);
+			name = SPLeakDetector;
+			path = ../../SPLeakDetector;
+			sourceTree = "<group>";
+		};
+		87FA874B8B977669B9EBADB2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				63FCD7E9F66456CED81600AB /* libPods-SPLeakDetector.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1F43C4B920BEF397001FE005 /* SPLeakDetector */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F43C4D020BEF397001FE005 /* Build configuration list for PBXNativeTarget "SPLeakDetector" */;
+			buildPhases = (
+				79574803DFB38346E8F64126 /* [CP] Check Pods Manifest.lock */,
+				1F43C4B620BEF397001FE005 /* Sources */,
+				1F43C4B720BEF397001FE005 /* Frameworks */,
+				1F43C4B820BEF397001FE005 /* Resources */,
+				9A3EBA4CFCFA020B6EECDC05 /* [CP] Embed Pods Frameworks */,
+				2E2257919A83369AA44EA917 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SPLeakDetector;
+			productName = SPLeakDetector;
+			productReference = 1F43C4BA20BEF397001FE005 /* SPLeakDetector.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1F43C4B220BEF397001FE005 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "su xinde";
+				TargetAttributes = {
+					1F43C4B920BEF397001FE005 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1F43C4B520BEF397001FE005 /* Build configuration list for PBXProject "SPLeakDetector" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1F43C4B120BEF397001FE005;
+			productRefGroup = 1F43C4BB20BEF397001FE005 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1F43C4B920BEF397001FE005 /* SPLeakDetector */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1F43C4B820BEF397001FE005 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F43C4CA20BEF397001FE005 /* LaunchScreen.storyboard in Resources */,
+				1F43C4C720BEF397001FE005 /* Assets.xcassets in Resources */,
+				1F43C4C520BEF397001FE005 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2E2257919A83369AA44EA917 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SPLeakDetector/Pods-SPLeakDetector-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		79574803DFB38346E8F64126 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SPLeakDetector-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A3EBA4CFCFA020B6EECDC05 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SPLeakDetector/Pods-SPLeakDetector-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1F43C4B620BEF397001FE005 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F43C4C220BEF397001FE005 /* ViewController.m in Sources */,
+				1F43C50020BEFD39001FE005 /* SPMemoryDebugger.m in Sources */,
+				1F43C50320BEFD39001FE005 /* UIView+SPLeak.m in Sources */,
+				1F43C50120BEFD39001FE005 /* SPMemoryDebuggerObjectProxy.m in Sources */,
+				1F43C50220BEFD39001FE005 /* UINavigationController+SPLeak.m in Sources */,
+				1F43C4CD20BEF397001FE005 /* main.m in Sources */,
+				1F43C4EE20BEFAD2001FE005 /* LeakingViewController.m in Sources */,
+				1F43C4FF20BEFD39001FE005 /* NSObject+SPLeakTrack.m in Sources */,
+				1F43C4BF20BEF397001FE005 /* AppDelegate.m in Sources */,
+				1F43C50420BEFD39001FE005 /* UIViewController+SPLeak.m in Sources */,
+				1F43C4FE20BEFD39001FE005 /* NSObject+SPLeak.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1F43C4C320BEF397001FE005 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F43C4C420BEF397001FE005 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1F43C4C820BEF397001FE005 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F43C4C920BEF397001FE005 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1F43C4CE20BEF397001FE005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1F43C4CF20BEF397001FE005 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1F43C4D120BEF397001FE005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6510A11D75703EEE5E5B02E6 /* Pods-SPLeakDetector.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MNECS5N9MA;
+				INFOPLIST_FILE = SPLeakDetector/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.su.SPLeakDetector;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1F43C4D220BEF397001FE005 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49A4000479962B0EB607B5AB /* Pods-SPLeakDetector.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MNECS5N9MA;
+				INFOPLIST_FILE = SPLeakDetector/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.su.SPLeakDetector;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1F43C4B520BEF397001FE005 /* Build configuration list for PBXProject "SPLeakDetector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F43C4CE20BEF397001FE005 /* Debug */,
+				1F43C4CF20BEF397001FE005 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F43C4D020BEF397001FE005 /* Build configuration list for PBXNativeTarget "SPLeakDetector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F43C4D120BEF397001FE005 /* Debug */,
+				1F43C4D220BEF397001FE005 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1F43C4B220BEF397001FE005 /* Project object */;
+}
