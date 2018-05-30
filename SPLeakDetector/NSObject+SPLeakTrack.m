@@ -17,6 +17,10 @@
         return;
     }
     
+    if ([self isKindOfClass:NSClassFromString(@"NSManagedObject")]) {
+        return;
+    }
+    
     NSMutableArray* watchedProperties = @[].mutableCopy;
     
     //track class level1
@@ -100,7 +104,7 @@
         NSString* name = [NSString stringWithUTF8String:property_getName(property)];
         
         //we are only interested in a very limited group of types
-        if ([typeName isEqualToString:@"T@\"PObjectProxy\""] ||
+        if ([typeName isEqualToString:@"T@\"SPMemoryDebuggerObjectProxy\""] ||
             [typeName hasPrefix:@"T@\"UI"] ||
             [typeName hasPrefix:@"T@\"NS"] ||
             [typeName rangeOfString:@"KVO"].location != NSNotFound) {
